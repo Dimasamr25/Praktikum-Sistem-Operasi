@@ -1,224 +1,210 @@
-clear
-i=0
-declare -a nama
-declare -a kode
-declare -a lahir
-declare -a mati
-declare -a agama
+#!/bin/bash
+lagi='y'
 
-cetak()
-{
-	echo -e "Data yang telah dimasukkan : \n"			
-		for (( q=0; q<i;q++  ))
-		do
-			echo -e "Data ke $[q+1]\nNama Mayat            : ${nama[q]}\nNomor Kematian        : ${kode[q]}\nTempat, tanggal lahir : ${lahir[q]}\nTempat, tanggal wafat : ${mati[q]}\nAgama                 : ${agama[q]}\n"
-		done
-}
-
-while :;
+while  [ $lagi == 'y' ] ||
+	   [ $lagi == 'Y' ];
 do
-	echo -e "Sistem Informasi Data Mayat pada Tempat Pemakaman Umum\n\n1. Masukkan data mayat\n2. Lihat data mayat\n3. Cari data mayat\n4. Perbarui data mayat\n5. Hapus data mayat\n6. Keluar program\n"
- 	echo -n "Masukkan pilihan : "
- 	read pilih
 
- 	if (("$pilih" == 1));   # INPUT DATA
- 	then 
-  		clear
- 	 	echo -n "Nama Mayat            : "
- 	 	read nama[$i]
- 	 	echo -n "Nomor Kematian        : "
-  		read kode[$i]
-	  	echo -n "Tempat, tanggal lahir : "
-  		read lahir[$i]
-		echo -n "Tempat, tanggal wafat : "
-  		read mati[$i]
-	  	echo -n "Agama                 : "
-  		read agama[$i]
- 	 	i=`expr $i + 1`
-		
-		if (("$i" >= 2))
-		then
-			for (( g=0; g<i-1; g++ ))
-			do
-	   			if (( "${kode[$i-1]}" == "${kode[g]}" ))
-				then
-		     			echo -e "\nNomor kematian ini sudah terdaftar!\nMasukan nomor yang lain!"
-					read
-					unset nama[$i-1]
-					unset kode[$i-1]
-					unset lahir[$i-1]
-					unset mati[$i-1]
-					unset agama[$i-1]
-					i=`expr $i - 1`
-					break
-	   			fi
-			done
-		fi
- 	 	clear
- 
- 	elif (("$pilih" == 2));   # TAMPILKAN DATA
- 	then
-  		if (( i == 0 ))
-  		then
-   			clear
-   			echo "Tidak ada data yang dapat ditampilkan"
-   			read
-   			clear
-  		else
-   			clear
-   			cetak
-   			read
-   			clear
-  		fi
+   clear
+   echo "=========================================";
+   echo "	PEMESANAN TIKET PESAWAT     		  ";
+   echo "	BANDARA JUANDA SURABAYA 			  ";
+   echo "=========================================";
+   echo "1. PEMESANAN TIKET     ";
+   echo "2. LIHAT DATA TERAKHIR PEMESANAN ";
+   echo "3. EXPORT KE TXT ";
+   echo "4. KELUAR       ";
+   echo "=========================================";
+   read -p "Pilihan anda  :" pil;
+   echo "=========================================";
 
- 	elif (("$pilih" == 3));   # CARI DATA
- 	then
-  		if (( i == 0))
-  		then
-   			clear
-   			echo "Tidak ada data yang dapat dicari"
-   			read
-   			clear
-  		else  
-   			clear
-      			echo -n "Masukkan nomor kematian yang ingin dicari : "
-      			read cari
+case $pil in 1)
+
+    clear;       
+
+       echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+       echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+       echo "        			HARGA TIKET ";
+       echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+       echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+       
+ 		echo  "1.Surabaya - Malang		= 1.000.000"
+		echo  "2.Surabaya - Semarang		= 2.000.000"
+		echo  "3.Surabaya - Bandung		= 3.000.000"
+		echo  "4.Surabaya - Batam		= 4.000.000"
+		echo  "5.Surabaya - Balikpapan		= 5.000.000"
+		echo  "6.Surabaya - Medan		= 6.000.000"
+		echo  "7.Surabaya - Makassar		= 7.000.000"
+		echo  "8.Surabaya - Yokyakarta		= 8.000.000"
+		echo  "9.Surabaya - Bali		= 9.000.000"
+		echo  "10.Surabaya - Jakarta		= 10.000.000"
+       
+
+       echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"; 
+       echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+       echo -n "Masukan nama anda                 		:";
+       read nama 
+       echo -n "Masukan alamat anda               		:";
+       read alamat
+       echo -n "Masukkan No KTP					:";
+       read noktp
+       echo -n "Masukan nomor tiket 				:";
+       read jenis
+       echo -n "Masukan total tiket yang akan dipesan		:";
+       read jum
+       echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+       echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+
+
+    
+       if [ $jenis -eq 1 ];  
+         then penerbangan="Surabaya - Malang";
+       tiket=100000;
+       let total=jum*tiket;
+
+    
+       elif [ $jenis -eq 2 ];
+        then penerbangan="Surabaya - Semarang";
+       tiket=200000;
+       let total=jum*tiket; 
+
+    
+       elif [ $jenis -eq 3 ];
+        then penerbangan="Surabaya - Bandung";
+       tiket=300000;
+       let total=jum*tiket;
+
+    
+       elif [ $jenis -eq 4 ];
+        then kpenerbangan="Surabaya - Batam";
+       tiket=400000;
+       let total=jum*tiket;
+
+    
+       elif [ $jenis -eq 5 ];
+        then penerbangan="Surabaya - Balikpapan";
+       tiket=500000;
+       let total=jum*tiket;
+
+    
+       elif [ $jenis -eq 6 ];
+        then penerbangan="Surabaya - Medan";
+       tiket=600000;
+       let total=jum*tiket;
+
+    
+       elif [ $jenis -eq 7 ]; 
+       	then penerbangan="Surabaya - Makassar";
+       tiket=700000;
+       let total=jum*tiket;
+
+    
+       elif [ $jenis -eq 8 ]; 
+       	then penerbangan="Surabaya - Yokyakarta";
+       tiket=800000;
+       let total=jum*tiket;
+
+    
+       elif [ $jenis -eq 9 ];    
+       	then penerbangan="Surabaya - Bali";
+       tiket=900000;
+       let total=jum*tiket;
+
+
+       elif [ $jenis -eq 10 ];    
+       	then penerbangan="Surabaya - Jakarta";
+       tiket=1000000;
+       let total=jum*tiket;
+
+
+       
+
+       else
+       echo "MAAF PILIHAN ANDA TIDAK TERSEDIA"
+       exit 1
+
+       fi
+
+;; 
+
+
+2)
+
+       clear;
+
+       echo "DATA PEMBELI TIKET";
+       echo "<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>";
+       echo "<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>";
+       echo "NAMA        : $nama";
+       echo "ALAMAT      : $alamat";
+       echo "PENERBANGAN : $penerbangan";
+       echo "JUMLAH      : $jum";
+       echo "=======================================";
+       echo "<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>";
+       echo "=======================================";
+       echo "TOTAL BAYAR : $total";
+       echo "<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>";
+       echo "<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>";
+       echo
+
+;;
+3)
+clear
+	echo -n "Cetak Tiket : "
+    read tiket
+        echo  -e "        ==================================\n
+
+                    Tiket Pesawat\n
+        ==================================\n
+           Nama        : ${nama}\n
+           Alamat      : ${alamat}\n
+           Penerbangan : ${penerbangan}\n
+           Jumlah      : ${jum}\n
+           Total Bayar : ${total}\n
+
+        ==================================
+           			
+
+           				" > $tiket.txt
+
+        echo ""
+
+        clear
+
+        echo "Pembuatan file telah berhasil!!"
+        read
    
-      			k=0
-      			while (($cari != ${kode[$k]}))
-      			do
-    				k=`expr $k + 1`
-      			done
+;;
+
+4)
+  echo
+  echo
+  echo "TERIMA KASIH TELAH MEMESAN TIKET DI LOKET KAMI"
+ echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
       
-   			if (($cari == ${kode[$k]}));
-   			then
-    				echo -e "Nama Mayat            : ${nama[k]}\nNomor Kematian        : ${kode[k]}\nTempat, tanggal lahir : ${lahir[k]}\nTempat, tanggal wafat : ${mati[k]}\nAgama                 : ${agama[k]}\n"   
-
-   			else
-    				clear    
-    				echo -e "Data tidak ditemukan"
-   			fi
-   			read
-      			clear
-  		fi
-   
- 	elif (("$pilih" != 4 && "$pilih" != 2 && "$pilih" != 1 && "$pilih" != 3 && "$pilih" != 5 && "$pilih" != 6));   # APABILA MEMBERIKAN MASUKAN SELAIN 1-6
- 	then
-  		echo "Pilihan tidak valid"
-  		read
-  		clear
-
-	elif (( "$pilih" == 5 ));   # HAPUS DATA
-	then
-		if (( i == 0))
-  		then
-   			clear
-   			echo "Tidak ada data yang dapat dihapus"
-   			read
-   			clear
-  		else  
-   			clear
-   			cetak
-			echo -n "Masukkan nomor kematian : "
-      			read cari
-   
-      			k=0
-      			while (($cari != ${kode[$k]}))
-      			do
-    				k=`expr $k + 1`
-      			done
+  echo "SEMOGA ANDA PUAS ATAS PELAYANAN KAMI"
+ echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
       
-   			if (($cari == ${kode[$k]}));
-   			then			
-    				unset nama[k]
-				unset kode[k]
-				unset lahir[k]
-				unset mati[k]
-				unset agama[k]
-
-				if [[ -z ${kode[k]} ]]
-				then
-					if (($i == 1))
-					then
-						i=0
-	
-					elif (($i == 2))
-					then
-						for ((f=$k; f<i; f++))
-						do
-							nama[f]=${nama[$f+1]}
-							kode[f]=${kode[$f+1]}
-							lahir[f]=${lahir[$f+1]}
-							mati[f]=${mati[$f+1]}
-							agama[f]=${agama[$f+1]}
-						done
-						i=`expr $i - 1`
-
-					elif (($i > 2))
-					then
-						if [[ -n ${kode[$k-1]} ]]
-						then
-							for (( d=$k; d<i; d++ ))
-							do
-								nama[d]=${nama[$d+1]}
-								kode[d]=${kode[$d+1]}
-								lahir[d]=${lahir[$d+1]}
-								mati[d]=${mati[$d+1]}
-								agama[d]=${agama[$d+1]}
-							done
-						fi
-						i=`expr $i - 1`
-					fi									
-				fi
-   			else
-    				clear    
-    				echo -e "Data tidak ditemukan"
-   			fi
-   			read
-      			clear
-  		fi
-
-	elif (("$pilih" == 4));   # MEMPERBAHARUI DATA
-	then
-		if (( i == 0))
-  		then
-   			clear
-   			echo "Tidak ada data yang dapat diperbarui"
-   			read
-   			clear
-  		else  
-   			clear
-			cetak
-      			echo -e -n "\nMasukkan nomor kematian yang ingin diperbarui : "
-      			read baru
-   
-      			l=0
-      			while (($baru != ${kode[$l]}))
-      			do
-    				l=`expr $l + 1`
-      			done
+  echo "SEMOGA ANDA SELALU BERLANGGANAN DI MASKAPAI KAMI"
+ echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
       
-   			if (($baru == ${kode[$l]}));
-   			then
-				echo -n "Nama Mayat            : "
-		 	 	read nama[$l]
-			  	echo -n "Tempat, tanggal lahir : "
-		  		read lahir[$l]
-				echo -n "Tempat, tanggal wafat : "
-		  		read mati[$l]
-			  	echo -n "Agama                 : "
-		  		read agama[$l]
+  echo "^.^ ^.^  TERIMA KASIH ^.^ ^.^"
+ echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+      
+  exit 1
 
- 	 			clear
-   			else
-    				clear    
-    				echo -e "Data tidak ditemukan"
-				read
-   			fi
-      			clear
-  		fi
- 
- 	else    # KELUAR PROGAM
-  		exit
- 	fi
+;;
+
+*)
+
+       echo "Maaf, tidak tersedia"
+       exit 1
+
+;;
+
+esac
+
+echo -n "Yakin dengan pesanan anda? jika iya tekan(y) kembali ke menu awal, tekan (n) untuk keluar (y/n) :";
+read lagi;
+
 done
